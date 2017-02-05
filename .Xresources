@@ -82,8 +82,8 @@ URxvt.urgentOnBell: true
 URxvt.scrollBar: false
 
 !URxvt.font: xft:monospace:size=10
-URxvt.font: xft:xos4 Terminess Powerline:size=13
-!URxvt.font: xft:Terminus Powerline:size=13
+URxvt.font: xft:xos4 Terminess Powerline:size=10
+!URxvt.font: xft:xos4 Terminus:size=10
 
 ! Good with monospace
 !URxvt.letterSpace: -1 

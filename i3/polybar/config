@@ -24,7 +24,7 @@ darkgreen = #1c7a4e
 ;Non-floating bar
 width = 100%
 override-redirect = false
-height = 26
+height = 20
 offset-x = 0
 offset-y = 0
 
@@ -36,7 +36,7 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-right = wlan mpd wired-network cpu memory updates filesystem pkgupdates battery date volume
+modules-right = mpd wired-network cpu memory wlan updates filesystem pkgupdates battery date volume
 modules-center = 
 modules-left = i3 xwindow
 
@@ -49,9 +49,9 @@ underline-size = 0
 underline-color = ${colors.white}
 
 font-2 = PowerlineFont:size=10;0
-font-0 = xos4 Terminus:size=10;0
+font-0 = xos4 Terminus:size=13;0
 font-1 = Roboto:size=10;0
-font-3 = FontAwesome:size=10;0
+font-3 = FontAwesome:size=9;0
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -135,7 +135,7 @@ scroll-down = i3wm-wsprev
 type = internal/xwindow
 format-background = ${colors.darkgreen}
 format-foreground = ${colors.white}
-label = ----> %title%
+label = --> %title%
 label-maxlen = 200
 
 ;[module/filesystem]
@@ -297,7 +297,7 @@ ramp-coreload-7 = █
 ramp-coreload-underline = ${colors.white}
 
 type = internal/cpu
-interval = 2
+interval = 1
 label =CPU %percentage-cores%
 # label = %{F${colors.white}  %percentage% %{F-}
 label-underline = ${colors.white}
@@ -315,8 +315,8 @@ label-foreground = ${colors.white}
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0
-interval = 2.0
+interface = wlp3s0
+interval = 1.0
 format-background = ${colors.gray}
 
 format-connected-padding = 0
@@ -328,8 +328,8 @@ format-disconnected-underline = ${colors.gray}
 
 accumulate-stats = true
 
-label-connected = %essid% %signal%% |%local_ip%| D:%downspeed% U:%upspeed%
-;label-connected = <%local_ip%> D:%downspeed% U:%upspeed%
+;label-connected = %essid% %signal%% |%local_ip%| D:%downspeed% U:%upspeed%
+label-connected = D:%downspeed% U:%upspeed% %local_ip% 
 label-disconnected = 
 label-disconnected-foreground = ${colors.gray}
 
