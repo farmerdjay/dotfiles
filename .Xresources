@@ -1,0 +1,94 @@
+#if __has_include(".extend.Xresources")
+#include ".extend.Xresources"
+#endif
+
+! ^ The above lines are no comments!
+! Leave them as they are if a file ~/.extend.Xresources is being used on your system.
+! config can be added there or also here below.
+! For comments use "!"
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+
+! ------------------
+! rxvt config
+! ------------------
+
+URxvt*background:                     #151718
+URxvt*foreground:                     #d6d6d6
+URxvt*cursorColor:                    #d6d6d6
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #d6d6d6
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #3B758C
+URxvt*highlightTextColor:             #43a5d5
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         color
+! URxvt*tab-fg:                         color
+! URxvt*tabbar-bg:                      color
+! URxvt*tabbar-fg:                      color
+
+URxvt*color0:                         #151718
+URxvt*color1:                         #Cd3f45
+URxvt*color2:                         #9fca56
+URxvt*color3:                         #e6cd69
+URxvt*color4:                         #55b5db
+URxvt*color5:                         #a074c4
+URxvt*color6:                         #55dbbe
+URxvt*color7:                         #d6d6d6
+URxvt*color8:                         #41535B
+URxvt*color9:                         #Cd3f45
+URxvt*color10:                        #9fca56
+URxvt*color11:                        #e6cd69
+URxvt*color12:                        #55b5db
+URxvt*color13:                        #a074c4
+URxvt*color14:                        #55dbbe
+URxvt*color15:                        #ffffff
+
+! 256 color space
+URxvt*color16:                        #db7b55
+URxvt*color17:                        #8a553f
+URxvt*color18:                        #8ec43d
+URxvt*color19:                        #3B758C
+URxvt*color20:                        #43a5d5
+URxvt*color21:                        #eeeeee
+
+URxvt.cursorBlink: false
+URxvt.cursorUnderline: false
+URxvt.urgentOnBell: true
+URxvt.scrollBar: false
+
+!URxvt.font: xft:monospace:size=10
+URxvt.font: xft:xos4 Terminess Powerline:size=13
+!URxvt.font: xft:Terminus Powerline:size=13
+
+! Good with monospace
+!URxvt.letterSpace: -1 
+!URxvt.depth: 24
+
+!URxvt.perl-ext-common: default,matcher,vtwheel,fullscreen
+
+!URxvt.keysym.F11: perl:fullscreen:switch

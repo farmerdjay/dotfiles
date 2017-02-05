@@ -1,0 +1,495 @@
+;:set syn=dosini
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+
+[colors]
+white = #d1d1d1
+gray = #585858
+black = #090909
+red = #c795ae
+brightred = #c62a1b
+blue = #95aec7
+darkblue = #2a4cba
+yellow = #c7ae95
+green = #aec795
+darkgreen = #1c7a4e
+;#269963
+
+
+
+[bar/fullBar]
+;Non-floating bar
+width = 100%
+override-redirect = false
+height = 26
+offset-x = 0
+offset-y = 0
+
+enable-ipc = true
+
+;padding-left = 0
+;padding-right = 0
+
+module-margin-right = 1
+;module-margin-left = 0
+
+modules-right = wlan mpd wired-network cpu memory updates filesystem pkgupdates battery date volume
+modules-center = 
+modules-left = i3 xwindow
+
+background = ${colors.black}
+foreground = ${colors.white}
+
+overline-size = 0
+overline-color =${colors.white}
+underline-size = 0
+underline-color = ${colors.white}
+
+font-2 = PowerlineFont:size=10;0
+font-0 = xos4 Terminus:size=10;0
+font-1 = Roboto:size=10;0
+font-3 = FontAwesome:size=10;0
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[bar/miniBar]
+width = 100%
+override-redirect = false
+height = 26
+offset-x = 0
+offset-y = 0
+
+enable-ipc = true
+
+module-margin-right = 1
+
+modules-right = wired-network cpu memory updates battery date
+modules-center = 
+modules-left = i3 xwindow
+
+background = ${colors.black}
+foreground = ${colors.white}
+
+overline-size = 0
+overline-color =${colors.white}
+underline-size = 0
+underline-color = ${colors.white}
+
+font-2 = PowerlineFont:size=10;0
+font-0 = xos4 Terminus:size=10;0
+font-1 = Roboto:size=10;0
+font-3 = FontAwesome:size=10;0
+
+
+[bar/floatBar]
+;width = 100%
+;override-redirect = false
+;height = 26
+;offset-x = 0
+;offset-y = 0
+
+
+; Floating bar
+width = 80%
+;allow bar to float
+override-redirect = true
+height = 26
+offset-x = 10%
+offset-y = 10
+
+enable-ipc = true
+
+padding-left = 0
+padding-right = 0
+
+module-margin-right = 1
+module-margin-left = 0
+
+modules-right = volume mpd wired-network cpu memory updates filesystem wlan battery date
+modules-center = 
+modules-left = i3 xwindow
+
+background = ${colors.black}
+foreground = ${colors.white}
+
+overline-size = 0
+overline-color =${colors.white}
+underline-size = 0
+underline-color = ${colors.white}
+
+font-2 = PowerlineFont:size=10;0
+font-0 = xos4 Terminus:size=10;0
+font-1 = Roboto:size=10;0
+font-3 = FontAwesome:size=10;0
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+
+
+[module/xwindow]
+type = internal/xwindow
+format-background = ${colors.darkgreen}
+format-foreground = ${colors.white}
+label = ----> %title%
+label-maxlen = 200
+
+;[module/filesystem]
+;type = internal/fs
+;interval = 30
+;
+;mount-0 = /
+;;mount-1 = /home
+;;mount-2 = /invalid/mountpoint
+;
+;label-mounted =  %mountpoint%: %percentage_used% of %total%
+;label-mounted-underline = ${colors.white}
+;label-mounted-padding = 1
+;
+;label-unmounted = 
+;label-unmounted-foreground = ${colors.black}
+
+
+;[module/bspwm]
+;type = internal/bspwm
+;ws-icon-default = x
+;
+;label-active = %index%
+;label-active-background = #ee333333
+;label-active-underline= #cc333333
+;label-active-padding = 2
+;
+;label-occupied = %index%
+;label-occupied-padding = 2
+;
+;label-urgent = %index%
+;label-urgent-background = #bd2c40
+;label-urgent-padding = 2
+;
+;label-empty = %index%
+;label-empty-foreground = #55
+;label-empty-padding = 2
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode> 
+index-sort = false
+
+label-mode = %mode%
+label-mode-padding = 0
+
+label-focused-font = 4
+label-unfocused-font = 4
+label-urgent-font = 4
+label-visible-font = 4 
+
+ws-icon-0 = 1; 
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;X
+ws-icon-default =
+
+label-focused = %name%
+;label-focused = 
+;label-focused = %index%
+label-focused-background = ${colors.darkgreen}
+label-focused-padding = 1
+
+label-unfocused = %name%
+;label-unfocused = 
+;label-unfocused = %index%
+label-unfocused-padding = 1
+;label-unfocused-background = ${colors.black}
+label-unfocused-underlinde = ${colors.white}
+
+label-urgent = %name%
+;label-urgent = 
+;label-urgent = %index%!
+label-urgent-background = ${colors.brightred}
+label-urgent-padding = 1
+label-urgent-foreground = ${colors.white}
+
+label-visible = %name%
+;label-visible = 
+;label-visible = %index%
+label-visible-foreground = ${colors.white}
+label-visible-padding = 1
+
+
+[module/pkgupdates]
+type = custom/script
+exec = checkupdates | wc -l
+tail = false
+label = PKG:%output%
+interval = 7200
+
+
+
+;[module/mpd]
+;type = internal/mpd
+;
+;host = 127.0.0.1
+;port = 4200
+;
+;intervel = 2
+;
+;format-online = <label-song> <icon-prev> <icon-play> <icon-pause> <icon-next> 
+;format-offline = <label-offline>
+;
+;label-offline =  no music
+;label-offline-foreground = ${colors.gray}
+;
+;label-song = %artist% - %title%
+;label-song-maxlen = 95
+;label-song-ellipsis = true
+;
+;icon-prev = 
+;icon-seekb = <<
+;icon-stop = o
+;icon-pause = 
+;icon-play = 
+;icon-next = 
+;icon-seekf = >>
+;
+;icon-random = S
+;icon-repeat = R
+;
+;toggle-on-foreground = #e60053
+;toggle-off-foreground = #66
+
+
+;[module/backlight]
+;type = internal/xbacklight
+;
+;format = <label> <bar>
+;label = BL
+;
+;bar-width = 10
+;bar-indicator = │
+;bar-indicator-foreground = #ff
+;bar-indicator-font = 2
+;bar-fill = ─
+;bar-fill-font = 2
+;bar-fill-foreground = #9f78e1
+;bar-empty = ─
+;bar-empty-font = 2
+;bar-empty-foreground = #55
+
+
+[module/cpu]
+format-label = internal/cpu
+
+format = <label>
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+ramp-coreload-underline = ${colors.white}
+
+type = internal/cpu
+interval = 2
+label =CPU %percentage-cores%
+# label = %{F${colors.white}  %percentage% %{F-}
+label-underline = ${colors.white}
+padding= 0
+
+
+[module/memory]
+type = internal/memory
+interval = 3
+
+#label = %{F${colors.white} MEM %percentage_used% %{F-}
+label =MEM %percentage_used%%
+label-underline = ${colors.white}
+label-foreground = ${colors.white}
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 2.0
+format-background = ${colors.gray}
+
+format-connected-padding = 0
+format-disconnected-padding = 0
+
+format-connected =<label-connected>
+format-connected-underline = ${colors.white}
+format-disconnected-underline = ${colors.gray}
+
+accumulate-stats = true
+
+label-connected = %essid% %signal%% |%local_ip%| D:%downspeed% U:%upspeed%
+;label-connected = <%local_ip%> D:%downspeed% U:%upspeed%
+label-disconnected = 
+label-disconnected-foreground = ${colors.gray}
+
+
+;[module/wired-network]
+;type = internal/network
+;interface = enp3s0
+;interval = 3.0
+;
+;format-connected-padding = 1
+;format-disconnected-padding = 1
+;
+;format-connected-underline = ${colors.white}
+;format-disconnected-underline = ${colors.gray}
+;
+;label-connected =  
+;label-disconnected = 
+;label-disconnected-foreground = ${colors.gray}
+
+
+[module/date]
+type = internal/date
+date =  %b %d %a %l:%M %p 
+interval = 15
+;format-underline = ${colors.white}
+;format-background = ${colors.black}
+;format-foreground = ${colors.white}
+format-padding = 1
+
+
+[module/volume]
+type = internal/volume
+mapping = true
+
+format-volume = <bar-volume> 
+;format-volume = V: <label-volume>
+
+label-volume = %percentage%
+label-volume-foreground = ${root.foreground}
+
+label-muted = muted
+label-muted-foreground = ${colors.gray}
+
+bar-volume-width = 6
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.green}
+bar-volume-foreground-4 = ${colors.yellow}
+bar-volume-foreground-5 = ${colors.red}
+bar-volume-gradient = false
+#bar-volume-indicator = 
+bar-volume-indicator = |
+bar-volume-indicator-font = 4
+bar-volume-indicator-foreground = ${colors.white}
+#bar-volume-fill = 
+bar-volume-fill = |
+bar-volume-fill-font = 4
+#bar-volume-empty = 
+bar-volume-empty = |
+bar-volume-empty-font = 4
+bar-volume-empty-foreground = ${colors.gray}
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 95
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.green}
+format-charging-padding = 0
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.yellow}
+format-discharging-padding = 1
+
+;format-full =   <label-full>  |
+format-full = <label-full>
+format-full-underline = ${self.format-charging-underline}
+format-full-overline = ${self.format-charging-underline}
+format-full-padding = 0
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.white}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.white}
+animation-charging-framerate = 500
+
+
+;[module/temperature]
+;type = internal/temperature
+;thermal-zone = 0
+;warn-temperature = 65
+;
+;format = <label>
+;format-underline = ${colors.white}
+;format-warn = <label-warn>
+;format-warn-underline = ${colors.red}
+;
+;format-padding = 1
+;format-warn-padidng = 1
+;
+;label =  %temperature%
+;label-warn =  %temperature%
+;
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+;ramp-foreground = #55
+
+
+[module/menu0]
+type = custom/menu
+
+format = <label-toggle> <menu>
+format-underline = ${colors.white}
+format-padding = 1
+
+menu-0-0 =  shutdown
+menu-0-0-exec = shutdown now
+menu-0-1 =  restart
+menu-0-1-exec = shutdown -r now
+menu-0-2 =   cancel
+
+label-open =   
+label-close =
+
+
+;[module/powermenu]
+;type = custom/menu
+;
+;label-open =  power
+;label-open-foreground = #e60053
+;label-close =  cancel
+;label-close-foreground = #e60053
+;label-separator = |
+;label-separator-foreground = #55
+;
+;menu-0-0 = reboot
+;menu-0-0-exec = menu-open-1
+;menu-0-1 = power off
+;menu-0-1-exec = menu-open-2
+;
+;menu-1-0 = cancel
+;menu-1-0-exec = menu-open-0
+;menu-1-1 = reboot
+;menu-1-1-exec = sudo reboot
+;
+;menu-2-0 = power off
+;menu-2-0-exec = sudo poweroff
+;menu-2-1 = cancel
+;menu-2-1-exec = menu-open-0
+
+;vim:ft=dosini
