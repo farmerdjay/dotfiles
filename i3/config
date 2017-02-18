@@ -129,13 +129,12 @@ bindsym $mod+Shift+0 move container to workspace 10
 # assign [class="Thunar"] $workspace2
 #assign [class="Subl3"] $workspace2
 #assign [class="Chromium"] $workspace3
-assign [class="Google-chrome"] $workspace3 
+#assign [class="Google-chrome"] $workspace3 
 
 # User Added Code (Not including user modified code about)
 bindsym $mod+shift+x exec i3lock --color "$black"
 
-
-exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome-stable --incognito; workspace $workspace1'
+# Setting the start-up environment
 #exec --no-startup-id xrandr --output LVDS1 --off
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec i3-sensible-terminal
@@ -146,10 +145,9 @@ exec_always feh --no-startup-id --bg-fill ~/Pictures/wallpaper.jpg
 #exec --no-startup-id i3-msg 'workspace $workspace2; exec subl3; workspace $workspace1'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec thunar; exec i3-sensible-terminal; workspace $workspace1'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec i3-sensible-terminal; workspace $workspace1'
-
-
-
-
+#exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome-stable --incognito'
+# hangouts: never float, never sticky, no border, always on workspace 5
+for_window [title="^Google Hangouts.*$" window_role="app"] floating disable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -188,16 +186,19 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         # i3status config file original location: /etc/i3status.conf
-        # status_command i3status -c /home/jason/.config/i3/i3status.conf
+        #status_command i3status -c /home/jason/.config/i3/i3status.conf
 
         # i3block config file original location: /etc/i3block.conf
         #status_command i3blocks -c /home/jason/.config/i3/i3blocks.conf
 
-        position top
+     	position top
         mode invisible
 
-        status_command polybar fullBar -c /home/jason/.config/i3/polybar/config
+        #status_command polybar fullBar -c /home/jason/.config/i3/polybar/config
+        status_command ~/.config/i3/polybar.sh
 }
+#exec --no-startup-id ~/.config/i3/polybar.sh
+
 
 set $darkred     #660d21
 set $red         #af2121

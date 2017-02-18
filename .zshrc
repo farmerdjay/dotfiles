@@ -90,4 +90,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 DEFAULT_USER="jason"
+alias cdhot="cd /run/user/1000/gvfs/smb-share:server=hotbox,share=s128"
 

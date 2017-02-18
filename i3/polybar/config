@@ -36,7 +36,7 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-right = mpd wired-network cpu memory wlan updates filesystem pkgupdates battery date volume
+modules-right = mpd wired-network cpu memory wlan updates filesystem pkgupdates battery date volume 
 modules-center = 
 modules-left = i3 xwindow
 
@@ -226,9 +226,7 @@ type = custom/script
 exec = checkupdates | wc -l
 tail = false
 label = PKG:%output%
-interval = 7200
-
-
+interval = 45000
 
 ;[module/mpd]
 ;type = internal/mpd
@@ -315,7 +313,7 @@ label-foreground = ${colors.white}
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp3s0  
 interval = 1.0
 format-background = ${colors.gray}
 
@@ -328,8 +326,8 @@ format-disconnected-underline = ${colors.gray}
 
 accumulate-stats = true
 
-;label-connected = %essid% %signal%% |%local_ip%| D:%downspeed% U:%upspeed%
-label-connected = D:%downspeed% U:%upspeed% %local_ip% 
+label-connected = D:%downspeed% U:%upspeed% %essid% %signal%% %local_ip% 
+;label-connected = D:%downspeed% U:%upspeed% %local_ip% 
 label-disconnected = 
 label-disconnected-foreground = ${colors.gray}
 
