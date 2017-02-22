@@ -40,6 +40,10 @@ modules-right = mpd wired-network cpu memory wlan updates filesystem pkgupdates 
 modules-center = 
 modules-left = i3 xwindow
 
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.black}
+
 background = ${colors.black}
 foreground = ${colors.white}
 
