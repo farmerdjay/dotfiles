@@ -40,14 +40,13 @@ set wildmenu
 " netrw (vim build-in directory brower) settings
 let g:netrw_liststyle = 3	" directory browser open hit i to cycle through the view types. There are four different view types: thin, long, wide and tree.
 
-" move among buffers with CTRL
-map <C-J> :bnext<CR>
-map <C-K> :bprev<CR>
-
 " Airline Status Line {
 	set laststatus=2
 	let g:airline_powerline_fonts = 1
 	let g:airline_theme='bubblegum'
+	let g:airline#extensions#tabline#enabled = 1
+"	let g:airline#extensions#tabline#left_sep = ' '
+"	let g:airline#extensions#tabline#left_alt_sep = '|'
 "}
 
 ""Status line from vgod {
@@ -70,4 +69,13 @@ map <C-K> :bprev<CR>
 "		endif
 "	endfunction
 ""}
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf='mupdf'
+let g:livepreview_previewer = 'evince'
+"let g:livepreview_previewer = 'open -a Skim'
 
