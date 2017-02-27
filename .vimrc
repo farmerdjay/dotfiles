@@ -3,7 +3,7 @@
 
 set nocompatible        " not compatible with the old-fashion vi mode
 set bs=2                " allow backspacing over everything in insert mode
-set history=50          " keep 50 lines of command line history
+set history=200         " keep 200 lines of command line history
 set ruler               " show the cursor position all the time
 set autoread            " auto read when file is changed from outside
 set title		" change the terminal's title
@@ -19,6 +19,8 @@ filetype plugin on    " Enable filetype-specific plugins
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
+
+set showcmd		" show current command
 set hidden		" hides buffers instead of closing them
 set hlsearch            " search highlighting
 set autoindent          " auto indentation
@@ -30,24 +32,52 @@ set smartcase           " ignore case if search pattern is all lowercase,case-se
 set smarttab            " insert tabs on the start of a line according to context
 set number              " show line number
 set cursorline          " highlight the current line
-:highlight CursorLine   cterm=NONE 	" high current line number
-:highlight LineNr ctermfg=DarkGrey	" grey out other line numbers
+":hi CursorLine   cterm=NONE 	" highlight current line number without underline
+":hi LineNr ctermfg=DarkGrey	" grey out other line numbers
+
+" Color Scheme
+colorscheme wombat256mod
+
 
 " Autocomplete Without Plug-in
 set path+=**
 set wildmenu
 
-" netrw (vim build-in directory brower) settings
-let g:netrw_liststyle = 3	" directory browser open hit i to cycle through the view types. There are four different view types: thin, long, wide and tree.
+" CtrlP Settings
+let g:ctrlp_show_hidden = 1		" find dot files
+
+
+" netrw (vim build-in directory browser) settings {
+	let g:netrw_liststyle = 3	" 3 is tree view (use 'i' to cycle through the options)
+"	let g:netrw_browse_split = 4	" open file in previous window
+"	let g:netrw_altv = 1		" open file to the right
+"	let g:netrw_banner = 0		" don't display the directory banner
+"	let g:netrw_winsize = 25	" set the width to 25% of the window
+"	augroup ProjectDrawer
+"	  autocmd!
+"	  autocmd VimEnter * :Vexplore
+"	augroup END
+"}
+
+
+" vim-latex Settings {
+	let g:tex_flavor='latex'			" load vim-latex when start an empty .tex file
+	let g:Tex_DefaultTargetFormat='pdf'		" produce pdf (instead of dvi) when compile
+	let g:Tex_ViewRule_pdf='evince'
+	"let g:livepreview_previewer = 'evince'
+	"let g:livepreview_previewer = 'open -a Skim'
+"}
+
 
 " Airline Status Line {
 	set laststatus=2
 	let g:airline_powerline_fonts = 1
 	let g:airline_theme='bubblegum'
-	let g:airline#extensions#tabline#enabled = 1
-"	let g:airline#extensions#tabline#left_sep = ' '
-"	let g:airline#extensions#tabline#left_alt_sep = '|'
+	let g:airline#extensions#tabline#enabled = 1		" show buffers at the top
+	"let g:airline#extensions#tabline#left_sep = ' '
+	"let g:airline#extensions#tabline#left_alt_sep = '|'
 "}
+
 
 ""Status line from vgod {
 "	set laststatus=2
@@ -70,12 +100,21 @@ let g:netrw_liststyle = 3	" directory browser open hit i to cycle through the vi
 "	endfunction
 ""}
 
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf='mupdf'
-let g:livepreview_previewer = 'evince'
-"let g:livepreview_previewer = 'open -a Skim'
+
+" Key Mapping
+let mapleader=','
+
+" Move to next buffer
+nnoremap <S-Tab> :bn<CR>
+inoremap <S-Tab> <Esc>:bn<CR>
+noremap <S-Tab> <Esc>:bn<CR>
+
+" Make pairs
+inoremap <leader>' ''<Esc>i
+inoremap <leader>" ""<Esc>i
+inoremap <leader>( ()<Esc>i
+inoremap <leader>[ []<Esc>i
+
+" Abbreviation
+iabbr teh the
 
