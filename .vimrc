@@ -6,7 +6,7 @@ set bs=2                " allow backspacing over everything in insert mode
 set history=200         " keep 200 lines of command line history
 set ruler               " show the cursor position all the time
 set autoread            " auto read when file is changed from outside
-set title		" change the terminal's title
+set title               " change the terminal's title
 
 
 filetype off          " necessary to make ftdetect work on Linux
@@ -20,8 +20,8 @@ filetype plugin on    " Enable filetype-specific plugins
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 
-set showcmd		" show current command
-set hidden		" hides buffers instead of closing them
+set showcmd             " show current command
+set hidden              " hides buffers instead of closing them
 set hlsearch            " search highlighting
 set autoindent          " auto indentation
 set incsearch           " incremental search
@@ -35,6 +35,15 @@ set cursorline          " highlight the current line
 ":hi CursorLine   cterm=NONE 	" highlight current line number without underline
 ":hi LineNr ctermfg=DarkGrey	" grey out other line numbers
 
+" Highlight the 81th column
+highlight ColorColumn ctermbg=magenta
+"set colorcolumn=81
+call matchadd('ColorColumn', '\%81v', 100)
+
+" Show tap and spce (need 'set list' to show)
+set listchars=tab:>-,nbsp:_,trail:.
+"set list
+
 " Color Scheme
 colorscheme wombat256mod
 
@@ -44,15 +53,15 @@ set path+=**
 set wildmenu
 
 " CtrlP Settings
-let g:ctrlp_show_hidden = 1		" find dot files
+let g:ctrlp_show_hidden = 1             " find dot files
 
 
 " netrw (vim build-in directory browser) settings {
-	let g:netrw_liststyle = 3	" 3 is tree view (use 'i' to cycle through the options)
-"	let g:netrw_browse_split = 4	" open file in previous window
-"	let g:netrw_altv = 1		" open file to the right
-"	let g:netrw_banner = 0		" don't display the directory banner
-"	let g:netrw_winsize = 25	" set the width to 25% of the window
+	let g:netrw_liststyle = 3       " 3 is tree view (use 'i' to cycle through the options)
+"	let g:netrw_browse_split = 4    " open file in previous window
+"	let g:netrw_altv = 1            " open file to the right
+"	let g:netrw_banner = 0          " don't display the directory banner
+"	let g:netrw_winsize = 25        " set the width to 25% of the window
 "	augroup ProjectDrawer
 "	  autocmd!
 "	  autocmd VimEnter * :Vexplore

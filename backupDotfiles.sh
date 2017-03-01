@@ -14,5 +14,5 @@ echo ""
 echo "RSYNC OUTPUT:"
 echo ""
 
-rsync -aAXv ~/.bashrc ~/.vimrc ~/.tmux.conf ~/.Xresources ~/.zshrc ~/.vim ~/.config/i3 ~/codes/dotfiles
+rsync -aAXv --delete ~/.bashrc ~/.vimrc ~/.tmux.conf ~/.Xresources ~/.zshrc ~/.vim ~/.config/i3 ~/codes/dotfiles
 
