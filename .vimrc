@@ -35,10 +35,11 @@ set cursorline          " highlight the current line
 ":hi CursorLine   cterm=NONE 	" highlight current line number without underline
 ":hi LineNr ctermfg=DarkGrey	" grey out other line numbers
 
-" Highlight the 81th column
-highlight ColorColumn ctermbg=magenta
-"set colorcolumn=81
-call matchadd('ColorColumn', '\%81v', 100)
+" Highlight the 81th column {
+	highlight ColorColumn ctermbg=magenta
+	"set colorcolumn=81
+	call matchadd('ColorColumn', '\%81v', 100)
+"}
 
 " Show tap and spce (need 'set list' to show)
 set listchars=tab:>-,nbsp:_,trail:.
@@ -69,11 +70,17 @@ let g:ctrlp_show_hidden = 1             " find dot files
 "}
 
 
-" vim-latex Settings {
+" vim-latex and vim-latex-live-preview Settings {
 	let g:tex_flavor='latex'			" load vim-latex when start an empty .tex file
 	let g:Tex_DefaultTargetFormat='pdf'		" produce pdf (instead of dvi) when compile
+	autocmd Filetype tex setl updatetime=2
+
+	" Linux Settings
 	let g:Tex_ViewRule_pdf='evince'
-	"let g:livepreview_previewer = 'evince'
+	let g:livepreview_previewer = 'evince'
+
+	" Mac Settings
+	"let g:Tex_ViewRule_pdf='Skim'
 	"let g:livepreview_previewer = 'open -a Skim'
 "}
 
@@ -126,4 +133,6 @@ inoremap <leader>[ []<Esc>i
 
 " Abbreviation
 iabbr teh the
+iabbr adn and
+
 
