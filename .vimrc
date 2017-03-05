@@ -31,6 +31,7 @@ set ignorecase          " ignore case when searching
 set smartcase           " ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab            " insert tabs on the start of a line according to context
 set number              " show line number
+set relativenumber	" show relative line number
 set cursorline          " highlight the current line
 ":hi CursorLine   cterm=NONE 	" highlight current line number without underline
 ":hi LineNr ctermfg=DarkGrey	" grey out other line numbers
@@ -71,8 +72,8 @@ let g:ctrlp_show_hidden = 1             " find dot files
 
 
 " vim-latex and vim-latex-live-preview Settings {
-	let g:tex_flavor='latex'			" load vim-latex when start an empty .tex file
-	let g:Tex_DefaultTargetFormat='pdf'		" produce pdf (instead of dvi) when compile
+	let g:tex_flavor='latex'		" load vim-latex when start an empty .tex file
+	let g:Tex_DefaultTargetFormat='pdf'	" produce pdf (not dvi) when compile
 	autocmd Filetype tex setl updatetime=2
 
 	" Linux Settings
