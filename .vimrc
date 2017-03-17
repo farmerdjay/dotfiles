@@ -54,6 +54,9 @@ colorscheme wombat256mod
 set path+=**
 set wildmenu
 
+" Spell check
+map <F6> :setlocal spell! spelllang=en_us<CR>
+
 " CtrlP Settings
 let g:ctrlp_show_hidden = 1             " find dot files
 
