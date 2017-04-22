@@ -274,7 +274,7 @@ mode "num" {
 bindsym Num_Lock mode "num"
 
 # Gaps around windows
-gaps inner 20
+gaps inner 30
 gaps outer 0
 
 # Adjust gaps
