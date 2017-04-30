@@ -36,7 +36,7 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-right = mpd wired-network cpu memory wlan updates filesystem pkgupdates battery date volume 
+modules-right = mpd wired-network cpu memory wlan filesystem pkgupdates battery date temperature backlight volume 
 modules-center = 
 modules-left = i3 xwindow
 
@@ -71,7 +71,7 @@ enable-ipc = true
 
 module-margin-right = 1
 
-modules-right = wired-network cpu memory updates battery date
+modules-right = wired-network cpu memory battery date
 modules-center = 
 modules-left = i3 xwindow
 
@@ -113,7 +113,7 @@ padding-right = 0
 module-margin-right = 1
 module-margin-left = 0
 
-modules-right = volume mpd wired-network cpu memory updates filesystem wlan battery date
+modules-right = volume mpd wired-network cpu memory filesystem wlan battery date
 modules-center = 
 modules-left = i3 xwindow
 
@@ -158,27 +158,6 @@ label-maxlen = 200
 ;label-unmounted-foreground = ${colors.black}
 
 
-;[module/bspwm]
-;type = internal/bspwm
-;ws-icon-default = x
-;
-;label-active = %index%
-;label-active-background = #ee333333
-;label-active-underline= #cc333333
-;label-active-padding = 2
-;
-;label-occupied = %index%
-;label-occupied-padding = 2
-;
-;label-urgent = %index%
-;label-urgent-background = #bd2c40
-;label-urgent-padding = 2
-;
-;label-empty = %index%
-;label-empty-foreground = #55
-;label-empty-padding = 2
-
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode> 
@@ -192,11 +171,17 @@ label-unfocused-font = 4
 label-urgent-font = 4
 label-visible-font = 4 
 
-ws-icon-0 = 1; 
-ws-icon-1 = 2;
-ws-icon-2 = 3;
+ws-icon-0 = 1; 
+ws-icon-1 = 2;
+ws-icon-2 = 3;
 ws-icon-3 = 4;X
 ws-icon-default =
+
+:ws-icon-0 = 1; 
+:ws-icon-1 = 2;
+:ws-icon-2 = 3;
+:ws-icon-3 = 4;X
+:ws-icon-default =
 
 label-focused = %name%
 ;label-focused = 
@@ -265,22 +250,23 @@ interval = 45000
 ;toggle-off-foreground = #66
 
 
-;[module/backlight]
-;type = internal/xbacklight
-;
-;format = <label> <bar>
-;label = BL
-;
-;bar-width = 10
-;bar-indicator = │
-;bar-indicator-foreground = #ff
-;bar-indicator-font = 2
-;bar-fill = ─
-;bar-fill-font = 2
-;bar-fill-foreground = #9f78e1
-;bar-empty = ─
-;bar-empty-font = 2
-;bar-empty-foreground = #55
+[module/backlight]
+type = internal/xbacklight
+enable-scroll = true
+
+format = <label> <bar>
+label = 
+
+bar-width = 5
+bar-indicator = │
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = #55
 
 
 [module/cpu]
@@ -301,7 +287,7 @@ ramp-coreload-underline = ${colors.white}
 type = internal/cpu
 interval = 1
 label =CPU %percentage-cores%
-# label = %{F${colors.white}  %percentage% %{F-}
+;# label = %{F${colors.white}  %percentage% %{F-}
 label-underline = ${colors.white}
 padding= 0
 
@@ -317,7 +303,7 @@ label-foreground = ${colors.white}
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0  
+interface = wlp1s0  
 interval = 1.0
 format-background = ${colors.gray}
 
@@ -375,7 +361,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = muted
 label-muted-foreground = ${colors.gray}
 
-bar-volume-width = 6
+bar-volume-width = 9
 bar-volume-foreground-0 = ${colors.green}
 bar-volume-foreground-1 = ${colors.green}
 bar-volume-foreground-2 = ${colors.green}
@@ -398,9 +384,9 @@ bar-volume-empty-foreground = ${colors.gray}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC0
-full-at = 95
+battery = BAT1
+adapter = ACAD
+full-at = 99
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.green}
@@ -430,26 +416,26 @@ animation-charging-foreground = ${colors.white}
 animation-charging-framerate = 500
 
 
-;[module/temperature]
-;type = internal/temperature
-;thermal-zone = 0
-;warn-temperature = 65
-;
-;format = <label>
-;format-underline = ${colors.white}
-;format-warn = <label-warn>
-;format-warn-underline = ${colors.red}
-;
-;format-padding = 1
-;format-warn-padidng = 1
-;
-;label =  %temperature%
-;label-warn =  %temperature%
-;
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-;ramp-foreground = #55
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <label>
+format-underline = ${colors.white}
+format-warn = <label-warn>
+format-warn-underline = ${colors.red}
+
+format-padding = 1
+format-warn-padidng = 1
+
+label = %temperature%
+label-warn =  %temperature%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #55
 
 
 [module/menu0]

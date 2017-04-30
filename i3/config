@@ -10,8 +10,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $term xfce4-terminal
-#set $term i3-sensible-terminal
+#set $term xfce4-terminal
+set $term i3-sensible-terminal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -141,18 +141,18 @@ bindsym $mod+shift+x exec i3lock --color "$black"
 #exec --no-startup-id xrandr --output LVDS1 --off
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec chromium
-#exec redshift-gtk
+exec redshift-gtk
 # exec compton -f
-exec_always feh --no-startup-id --bg-fill ~/Pictures/wallpaper.jpg
+exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #exec --no-startup-id i3-msg 'workspace $workspace2; exec subl3; workspace $workspace1'
-exec --no-startup-id i3-msg 'workspace $workspace2; exec thunar; exec $term; workspace $workspace1'
+#exec --no-startup-id i3-msg 'workspace $workspace2; exec thunar; exec $term; workspace $workspace1'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec $term; workspace $workspace1'
-#exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome-stable --incognito'
+exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome-stable --incognito'
 # hangouts: never float, never sticky, no border, always on workspace 5
 for_window [title="^Google Hangouts.*$" window_role="app"] floating disable
 
 # Setting up scratchpad dropdown terminal
-exec --no-startup-id urxvt -name dropdown #-e tmux
+exec --no-startup-id $term -name dropdown #-e tmux
 #exec --no-startup-id $term --title=dropdown #-x tmux
 for_window [instance="dropdown"] floating enable;
 for_window [instance="dropdown"] move scratchpad; [instance="dropdown"] scratchpad show; resize set 1000 800;move position center; move scratchpad
