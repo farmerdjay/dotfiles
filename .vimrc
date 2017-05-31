@@ -75,6 +75,8 @@ let g:ctrlp_show_hidden = 1             " find dot files
 
 
 " vim-latex and vim-latex-live-preview Settings {
+" 	Compiling via latex-suite is simple. Goto normal mode and press \ll (replace \ with whatever mapleader setting you have). 
+" 	Execute :LLPStartPreview to launch the previewer.
 	let g:tex_flavor='latex'		" load vim-latex when start an empty .tex file
 	let g:Tex_DefaultTargetFormat='pdf'	" produce pdf (not dvi) when compile
 	autocmd Filetype tex setl updatetime=2

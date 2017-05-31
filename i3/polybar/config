@@ -37,8 +37,8 @@ module-margin-right = 1
 ;module-margin-left = 0
 
 modules-right = mpd wired-network cpu memory wlan filesystem pkgupdates battery date temperature backlight volume 
-modules-center = 
-modules-left = i3 xwindow
+modules-center = xwindow
+modules-left = i3 
 
 tray-position = right
 tray-padding = 2
@@ -139,8 +139,9 @@ scroll-down = i3wm-wsprev
 type = internal/xwindow
 format-background = ${colors.darkgreen}
 format-foreground = ${colors.white}
-label = --> %title%
+label = %title%
 label-maxlen = 200
+label-padding = 1
 
 ;[module/filesystem]
 ;type = internal/fs
@@ -166,22 +167,22 @@ index-sort = false
 label-mode = %mode%
 label-mode-padding = 0
 
-label-focused-font = 4
-label-unfocused-font = 4
-label-urgent-font = 4
-label-visible-font = 4 
+label-focused-font = 0
+label-unfocused-font = 0
+label-urgent-font = 0
+label-visible-font = 0 
 
-ws-icon-0 = 1; 
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;X
-ws-icon-default =
+;ws-icon-0 = 1; 
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-default =
 
-:ws-icon-0 = 1; 
-:ws-icon-1 = 2;
-:ws-icon-2 = 3;
-:ws-icon-3 = 4;X
-:ws-icon-default =
+;ws-icon-0 = 1; 
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-default =
 
 label-focused = %name%
 ;label-focused = 
@@ -216,6 +217,7 @@ exec = checkupdates | wc -l
 tail = false
 label = PKG:%output%
 interval = 45000
+format-foreground = ${colors.white}
 
 ;[module/mpd]
 ;type = internal/mpd
@@ -272,7 +274,9 @@ bar-empty-foreground = #55
 [module/cpu]
 format-label = internal/cpu
 
-format = <label>
+format = <label> 
+;format = <label> <ramp-coreload>
+format-foreground = ${colors.blue}
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -285,8 +289,8 @@ ramp-coreload-7 = █
 ramp-coreload-underline = ${colors.white}
 
 type = internal/cpu
-interval = 1
-label =CPU %percentage-cores%
+interval = 1.5
+label = %percentage-cores%
 ;# label = %{F${colors.white}  %percentage% %{F-}
 label-underline = ${colors.white}
 padding= 0
@@ -297,29 +301,30 @@ type = internal/memory
 interval = 3
 
 #label = %{F${colors.white} MEM %percentage_used% %{F-}
-label =MEM %percentage_used%%
+label =M %percentage_used%%
 label-underline = ${colors.white}
-label-foreground = ${colors.white}
+label-foreground = ${colors.yellow}
 
 [module/wlan]
 type = internal/network
 interface = wlp1s0  
-interval = 1.0
-format-background = ${colors.gray}
+interval = 2.0
 
 format-connected-padding = 0
 format-disconnected-padding = 0
 
 format-connected =<label-connected>
 format-connected-underline = ${colors.white}
-format-disconnected-underline = ${colors.gray}
+format-disconnected-underline = ${colors.red}
 
 accumulate-stats = true
 
-label-connected = D:%downspeed% U:%upspeed% %essid% %signal%% %local_ip% 
+label-connected = D:%downspeed:8% U:%upspeed:8% %essid% %signal%% %local_ip% 
 ;label-connected = D:%downspeed% U:%upspeed% %local_ip% 
-label-disconnected = 
-label-disconnected-foreground = ${colors.gray}
+label-connected-foreground = ${colors.green}
+label-disconnected =  NO WIFI
+label-disconnected-foreground = ${colors.white}
+label-disconnected-background = ${colors.brightred}
 
 
 ;[module/wired-network]
@@ -384,23 +389,21 @@ bar-volume-empty-foreground = ${colors.gray}
 
 [module/battery]
 type = internal/battery
-battery = BAT1
-adapter = ACAD
+battery = BAT0
+adapter = ADP1
 full-at = 99
+label-full-foreground = ${colors.white}
+label-discharging-foreground = ${colors.red}
+label-charging-foreground = ${colors.darkgreen}
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.green}
-format-charging-padding = 0
+;format-charging = <animation-charging> <label-charging>
+format-charging = <label-charging>
 
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${colors.yellow}
-format-discharging-padding = 1
+;format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging>
 
 ;format-full =   <label-full>  |
 format-full = <label-full>
-format-full-underline = ${self.format-charging-underline}
-format-full-overline = ${self.format-charging-underline}
-format-full-padding = 0
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
