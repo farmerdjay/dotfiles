@@ -149,9 +149,9 @@ bindsym $mod+Tab		workspace back_and_forth
 # User Added Code (Not including user modified code about)
 bindsym $mod+shift+x exec i3lock --color "$black"
 
-# Enable Tap-to-click and neutral scrolling on touchpad on this laptop
-exec xinput set-prop 14 296 1
-exec xinput set-prop 14 279 1
+# Enable Tap-to-click and neutral scrolling on touchpad on Acer Spin
+exec xinput set-prop 12 282 1		# neutral scrolling
+exec xinput set-prop 12 299 1		# tap-to-click	
 
 # Setting the start-up environment
 #exec --no-startup-id xrandr --output LVDS1 --off
