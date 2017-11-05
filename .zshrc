@@ -93,3 +93,10 @@ DEFAULT_USER="jason"
 alias cdhot="cd /run/user/1000/gvfs/smb-share:server=hotbox,share=s128"
 alias ytmp3="youtube-dl --extract-audio --audio-format mp3"
 
+#export RTV_BROWSER='firefox --private-window'
+export RTV_BROWSER='surf'
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+

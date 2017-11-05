@@ -32,6 +32,8 @@ set smartcase           " ignore case if search pattern is all lowercase,case-se
 set smarttab            " insert tabs on the start of a line according to context
 set number              " show line number
 set relativenumber	" show relative line number
+set foldmethod=indent	" folding basedon indentation
+set foldlevel=99	" folding level
 set cursorline          " highlight the current line
 ":hi CursorLine   cterm=NONE 	" highlight current line number without underline
 ":hi LineNr ctermfg=DarkGrey	" grey out other line numbers
@@ -126,10 +128,14 @@ let g:ctrlp_show_hidden = 1             " find dot files
 " Key Mapping
 let mapleader=','
 
+" Easy-Motion How-To
+" <leader-key> <leader-key> w
+
 " Move to next buffer
 nnoremap <S-Tab> :bn<CR>
 inoremap <S-Tab> <Esc>:bn<CR>
 noremap <S-Tab> <Esc>:bn<CR>
+nnoremap <space> za		" folding with spacebar
 
 " Make pairs
 inoremap <leader>' ''<Esc>i
