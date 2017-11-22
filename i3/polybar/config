@@ -12,10 +12,13 @@ black = #090909
 red = #c795ae
 brightred = #c62a1b
 blue = #95aec7
+lightblue = #7fd7ff
 darkblue = #2a4cba
 yellow = #c7ae95
 green = #aec795
 darkgreen = #1c7a4e
+pink = #ffafff
+purple = #8080ff
 ;#269963
 
 
@@ -36,9 +39,9 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-right = mpd wired-network cpu memory wlan filesystem pkgupdates battery date temperature backlight volume 
-modules-center = xwindow
 modules-left = i3 
+modules-center = xwindow
+modules-right = mpd wired-network cpu memory wlan filesystem pkgupdates battery volume temperature backlight date
 
 tray-position = right
 tray-padding = 2
@@ -161,8 +164,8 @@ label-padding = 1
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode> 
-index-sort = false
+;format = <label-state> <label-mode> 
+index-sort = true
 
 label-mode = %mode%
 label-mode-padding = 0
@@ -355,10 +358,10 @@ format-padding = 1
 
 [module/volume]
 type = internal/volume
-mapping = true
+;mapped = true
 
-format-volume = <bar-volume> 
-;format-volume = V: <label-volume>
+format-volume = VOL:<label-volume>% 
+;format-volume = <bar-volume> 
 
 label-volume = %percentage%
 label-volume-foreground = ${root.foreground}
@@ -397,13 +400,13 @@ label-discharging-foreground = ${colors.red}
 label-charging-foreground = ${colors.darkgreen}
 
 ;format-charging = <animation-charging> <label-charging>
-format-charging = <label-charging>
+format-charging = BAT:<label-charging>
 
 ;format-discharging = <ramp-capacity> <label-discharging>
-format-discharging = <label-discharging>
+format-discharging = BAT:<label-discharging>
 
 ;format-full =   <label-full>  |
-format-full = <label-full>
+format-full = BAT:<label-full>
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -425,12 +428,13 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <label>
+label-foreground = ${colors.purple}
 format-underline = ${colors.white}
 format-warn = <label-warn>
 format-warn-underline = ${colors.red}
 
-format-padding = 1
-format-warn-padidng = 1
+format-padding = 0
+format-warn-padidng = 0
 
 label = %temperature%
 label-warn =  %temperature%

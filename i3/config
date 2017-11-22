@@ -99,16 +99,16 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1"
-set $workspace2	"2"
-set $workspace3 "3"
-set $workspace4 "4"
-set $workspace5 "5"
-set $workspace6	"6"
-set $workspace7 "7"
-set $workspace8 "8"
-set $workspace9 "9"
-set $workspace10 "10"
+set $workspace1 " 1 "
+set $workspace2	" 2 "
+set $workspace3 " 3 "
+set $workspace4 " 4 "
+set $workspace5 " 5 "
+set $workspace6	" 6 "
+set $workspace7 " 7 "
+set $workspace8 " 8 "
+set $workspace9 " 9 "
+set $workspace10 " 10 "
 
 #set $workspace1 "1:  "
 #set $workspace2 "2:  "
@@ -138,12 +138,13 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-bindsym $mod+Escape		workspace prev
-bindsym $mod+Tab		workspace back_and_forth
+bindsym $mod+Control+h		workspace prev
+bindsym $mod+Control+l		workspace next
+bindsym $mod+Tab	workspace back_and_forth
 
-# assign [class="Thunar"] $workspace2
-#assign [class="Subl3"] $workspace2
-#assign [class="Chromium"] $workspace3
+bindsym $mod+Control+Left	workspace prev
+bindsym $mod+Control+Right	workspace next
+
 #assign [class="Google-chrome"] $workspace3 
 
 # User Added Code (Not including user modified code about)
@@ -158,31 +159,15 @@ exec xinput set-prop 12 299 1		# tap-to-click
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec chromium
 exec redshift-gtk
-exec guake
+#exec guake
 # exec compton -f
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
+exec_always --no-startup-id feh --randomize --bg-fill ~/Dropbox/Photos/wallpapers/
 #exec --no-startup-id i3-msg 'workspace $workspace2; exec subl3; workspace $workspace1'
 #exec --no-startup-id i3-msg 'workspace $workspace2; exec thunar; exec $term; workspace $workspace1'
 #exec --no-startup-id i3-msg 'workspace $workspace3; exec $term; workspace $workspace1'
 #exec --no-startup-id i3-msg 'workspace $workspace3; exec google-chrome-stable --incognito'
 # hangouts: never float, never sticky, no border, always on workspace 5
 for_window [title="^Google Hangouts.*$" window_role="app"] floating disable
-
-## Setting up scratchpad dropdown terminal
-#exec --no-startup-id $term -name dropdown #-e tmux
-##exec --no-startup-id $term --title=dropdown #-x tmux
-#for_window [instance="dropdown"] floating enable;
-#for_window [instance="dropdown"] move scratchpad; [instance="dropdown"] scratchpad show; resize set 1000 800;move position center; move scratchpad
-##for_window [instance="dropdown"] move scratchpad; [instance="dropdown"] scratchpad show; resize grow height 200px; resize grow width 200px; move scratchpad
-#bindsym $mod+d		[instance="dropdown"] scratchpad show
-#bindsym $mod+Shift+d	resize shrink height 10 px or 10 ppt
-
-#exec --no-startup-id $term 
-#for_window [instance="terminal"] floating enable;
-#for_window [instance="terminal"] move scratchpad; [instance="terminal"] scratchpad show; move scratchpad
-#bindsym $mod+u		[instance="terminal"] scratchpad show
-#bindsym $mod+Shift+u	resize shrink height 10 px or 10 ppt
-
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

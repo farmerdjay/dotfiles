@@ -89,14 +89,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH=$PATH:$HOME/bin
+
 DEFAULT_USER="jason"
 alias cdhot="cd /run/user/1000/gvfs/smb-share:server=hotbox,share=s128"
 alias ytmp3="youtube-dl --extract-audio --audio-format mp3"
+alias fp="bash -c firefox --private-window"
+alias bg='feh --randomize --bg-fill ~/Dropbox/Photos/wallpapers/'
 
-#export RTV_BROWSER='firefox --private-window'
 export RTV_BROWSER='surf'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+source ~/zshrc_personal
 
