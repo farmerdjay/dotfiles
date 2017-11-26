@@ -94,8 +94,16 @@ export PATH=$PATH:$HOME/bin
 DEFAULT_USER="jason"
 alias cdhot="cd /run/user/1000/gvfs/smb-share:server=hotbox,share=s128"
 alias ytmp3="youtube-dl --extract-audio --audio-format mp3"
-alias fp="bash -c firefox --private-window"
+alias pff='nohup firefox --private-window &'
 alias bg='feh --randomize --bg-fill ~/Dropbox/Photos/wallpapers/'
+alias r='ranger'
+alias weather='curl wttr.in'
+alias vrecord="ffmpeg -f x11grab \
+	-s $(xdpyinfo | grep dimension | awk '{print $2;}') \
+	-i $DISPLAY \
+	-f alsa -ac 2 -i default \
+	output.mkv"
+
 
 export RTV_BROWSER='surf'
 
