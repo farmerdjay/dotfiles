@@ -39,9 +39,9 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-left = i3 
-modules-center = xwindow
-modules-right = mpd wired-network cpu memory wlan filesystem pkgupdates battery volume temperature backlight date
+modules-left = 
+modules-center = i3 xwindow
+modules-right = mpd wired-network cpu memory wlan pkgupdates battery volume temperature filesystem backlight date 
 
 tray-position = right
 tray-padding = 2
@@ -321,8 +321,8 @@ format-disconnected-underline = ${colors.red}
 
 accumulate-stats = true
 
-label-connected = D:%downspeed:8% U:%upspeed:8% %essid% %signal%% %local_ip% 
-;label-connected = D:%downspeed% U:%upspeed% %local_ip% 
+;label-connected = D:%downspeed:8% U:%upspeed:8% %essid% %signal%% %local_ip% 
+label-connected = D:%downspeed% U:%upspeed% 
 label-connected-foreground = ${colors.green}
 label-disconnected =  NO WIFI
 label-disconnected-foreground = ${colors.white}
@@ -357,6 +357,11 @@ format-padding = 1
 
 [module/volume]
 type = internal/volume
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
 ;mapped = true
 
 format-volume = VOL:<label-volume>% 
