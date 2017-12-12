@@ -1,0 +1,22 @@
+# Choose your own keys for hint titles. I try to stick to the home row.
+set hint-keys=jklfds;a
+
+# Rebind Back and Forward to something more convenient.
+nnoremap H <C-O>
+nnoremap L <C-I>
+
+# I find just tapping 'qq' easier than :q<ENTER>.
+nnoremap m :q<CR>
+
+# Tweak font sizes as per your preferences.
+#set fontsize=10
+#set monofontsize=9
+#set minimumfontsize=7
+
+# I like browsing with Javascript turned off by default. However, if a website
+# needs it, can I just hit ! and have the page reload with JS activated.
+#set scripts=off
+nnoremap ! :set scripts!<CR>r
+
+# Type 'o g something' to search for something on Google
+shortcut-add g=https://encrypted.google.com/search?hl=en&q=$0

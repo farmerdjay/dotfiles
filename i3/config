@@ -155,8 +155,10 @@ bindsym $mod+Control+Right	workspace next
 bindsym $mod+shift+x exec i3lock --color "$black"
 
 # Enable Tap-to-click and neutral scrolling on touchpad on Acer Spin
-exec xinput set-prop 12 282 1		# neutral scrolling
-exec xinput set-prop 12 299 1		# tap-to-click	
+#exec xinput set-prop 11 288 1		# neutral scrolling
+#exec xinput set-prop 11 280 1		# tap-to-click	
+exec xinput set-prop 'ELAN0501:00 04F3:3018 Touchpad' 'libinput Tapping Enabled' 1
+xinput set-prop 'ELAN0501:00 04F3:3018 Touchpad' 'libinput Natural Scrolling Enabled' 1
 
 # Setting the start-up environment
 #exec --no-startup-id xrandr --output LVDS1 --off

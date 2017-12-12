@@ -2,7 +2,7 @@
 font = xos4 Terminus 14px
 
 [colors]
-background = rgba(63, 63, 63, 0.9)
+background = rgba(40, 40, 40, 0.85)
 
 # Base16 Atelier Estuary
 # Author: Bram de Haan (http://atelierbramdehaan.nl)
