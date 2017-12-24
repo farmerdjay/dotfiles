@@ -1,8 +1,14 @@
 [options]
 font = xos4 Terminus 14px
+#font = Roboto Mono 14px
+allow_bold = true
+clickable_url = true
+dynamic_title = true
+scrollback_lines = 10000
+
 
 [colors]
-background = rgba(40, 40, 40, 0.85)
+background = rgba(40, 40, 55, 0.85)
 
 # Base16 Atelier Estuary
 # Author: Bram de Haan (http://atelierbramdehaan.nl)

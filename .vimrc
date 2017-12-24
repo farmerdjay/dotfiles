@@ -7,6 +7,7 @@ set history=200         " keep 200 lines of command line history
 set ruler               " show the cursor position all the time
 set autoread            " auto read when file is changed from outside
 set title               " change the terminal's title
+set cm=blowfish2	" set cryptmethod to blowfish2
 
 
 filetype off          " necessary to make ftdetect work on Linux
@@ -18,7 +19,6 @@ filetype plugin on    " Enable filetype-specific plugins
 
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
-
 
 set showcmd             " show current command
 set hidden              " hides buffers instead of closing them
@@ -44,20 +44,25 @@ set cursorline          " highlight the current line
 	call matchadd('ColorColumn', '\%81v', 100)
 "}
 
-" Show tap and spce (need 'set list' to show)
+" Show tap and space (need 'set list' to show)
 set listchars=tab:>-,nbsp:_,trail:.
 "set list
 
 " Color Scheme
 colorscheme wombat256mod
 
-
 " Autocomplete Without Plug-in
+" <Ctrl-p> to insert previous matching word
+" <Ctrl-n> to insert next matching word
 set path+=**
 set wildmenu
 
 " Spell check
 map <F6> :setlocal spell! spelllang=en_us<CR>
+
+" Toggle line number and relative line number
+map <F7> :set invnumber<CR>
+map <F8> :set invrelativenumber<CR>
 
 " CtrlP Settings
 let g:ctrlp_show_hidden = 1             " find dot files
@@ -74,10 +79,18 @@ let g:ctrlp_show_hidden = 1             " find dot files
 "	  autocmd VimEnter * :Vexplore
 "	augroup END
 "}
+" :Explore or :Exp - opens netrw in the current window
+" :Sexplore or :Sex - opens netrw in a horizontal split window
+" :Vexplore or :Vex - opens netrw in a vertial split window
+
+" Windows
+" <Ctrl-ww> - switch between windows
 
 
 " vim-latex and vim-latex-live-preview Settings {
 " 	Compiling via latex-suite is simple. Goto normal mode and press \ll (replace \ with whatever mapleader setting you have). 
+" 	E.g. type 'eqnarray', escape to Normal mode, press <F5>, press
+" 	<Ctrl-j> to jump to next placeholder
 " 	Execute :LLPStartPreview to launch the previewer.
 	let g:tex_flavor='latex'		" load vim-latex when start an empty .tex file
 	let g:Tex_DefaultTargetFormat='pdf'	" produce pdf (not dvi) when compile
@@ -102,29 +115,6 @@ let g:ctrlp_show_hidden = 1             " find dot files
 	"let g:airline#extensions#tabline#left_alt_sep = '|'
 "}
 
-
-""Status line from vgod {
-"	set laststatus=2
-"	set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \
-"	set statusline+=\ \ \ [%{&ff}/%Y]
-"	set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\
-"	set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
-"
-"	function! CurDir()
-"		let curdir = substitute(getcwd(), $HOME, "~", "")
-"	        return curdir
-"	endfunction
-"
-"	function! HasPaste()
-"		if &paste
-"			return '[PASTE]'
-"		else
-"			return ''
-"		endif
-"	endfunction
-""}
-
-
 " Key Mapping
 let mapleader=','
 
@@ -135,7 +125,13 @@ let mapleader=','
 nnoremap <S-Tab> :bn<CR>
 inoremap <S-Tab> <Esc>:bn<CR>
 noremap <S-Tab> <Esc>:bn<CR>
+" :tabnew - open a new buffer in a new tab
+" :new - split window with an unnamed buffer
+
+" Folding
 nnoremap <space> za		" folding with spacebar
+nnoremap <F9> zr		" reduce folding level
+nnoremap <F10> zm		" more folding level
 
 " Make pairs
 inoremap <leader>' ''<Esc>i

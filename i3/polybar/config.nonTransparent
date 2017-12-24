@@ -1,6 +1,8 @@
+;:set syn=dosini
+
 [global/wm]
 margin-top = 0
-margin-bottom = 0 
+margin-bottom = 0
 
 
 [colors]
@@ -12,16 +14,11 @@ brightred = #c62a1b
 blue = #95aec7
 lightblue = #7fd7ff
 darkblue = #2a4cba
-navyblue = #0a16c9
-yellow = d8db20
-darkyellow = 9ea010
+yellow = #c7ae95
 green = #aec795
 darkgreen = #1c7a4e
 pink = #ffafff
 purple = #8080ff
-mud = #4c4f1d
-orange = #d16d0a
-turquoise = #10a099
 
 
 [bar/fullBar]
@@ -32,8 +29,6 @@ height = 20
 offset-x = 0
 offset-y = 0
 
-;dim-value = .5
-
 enable-ipc = true
 
 ;padding-left = 0
@@ -42,16 +37,16 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-left = pkgupdates 
-modules-center = i3 xwindow
-modules-right = cpu memory wlan vpn battery volume temperature backlight date 
+modules-left = i3 
+modules-center = xwindow
+modules-right = mpd wired-network cpu memory wlan vpn pkgupdates battery volume temperature filesystem backlight date 
 
-tray-position = left
-tray-padding = 1
+tray-position = right
+tray-padding = 2
 tray-background = ${colors.black}
 
-background = #00000000
-foreground = ${colors.black}
+background = ${colors.black}
+foreground = ${colors.white}
 
 overline-size = 0
 overline-color =${colors.white}
@@ -67,6 +62,52 @@ font-4 = FontAwesome:size=9;0
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
+;[bar/floatBar]
+;;width = 100%
+;;override-redirect = false
+;;height = 26
+;;offset-x = 0
+;;offset-y = 0
+;
+;
+;; Floating bar
+;width = 80%
+;;allow bar to float
+;override-redirect = true
+;height = 26
+;offset-x = 10%
+;offset-y = 10
+;
+;enable-ipc = true
+;
+;padding-left = 0
+;padding-right = 0
+;
+;module-margin-right = 1
+;module-margin-left = 0
+;
+;modules-right = volume mpd wired-network cpu memory filesystem wlan battery date
+;modules-center = 
+;modules-left = i3 xwindow
+;
+;background = ${colors.black}
+;foreground = ${colors.white}
+;
+;overline-size = 0
+;overline-color =${colors.white}
+;underline-size = 0
+;underline-color = ${colors.white}
+;
+;font-2 = PowerlineFont:size=10;0
+;font-0 = xos4 Terminus:size=10;0
+;font-1 = Roboto:size=10;0
+;font-3 = FontAwesome:size=10;0
+;
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+
 [module/xwindow]
 type = internal/xwindow
 format-background = ${colors.darkgreen}
@@ -75,12 +116,35 @@ label =  %title:0:100:...%
 ;label-maxlen = 100
 label-padding = 1
 
+;[module/filesystem]
+;type = internal/fs
+;interval = 30
+;
+;mount-0 = /
+;mount-1 = /home
+;;mount-2 = /invalid/mountpoint
+;
+;label-mounted =  %mountpoint%: %percentage_used% of %total%
+;label-mounted-underline = ${colors.white}
+;label-mounted-padding = 1
+;
+;label-unmounted = %mountpoint%: Not mounted
+;label-unmounted-foreground = ${colors.black}
+
+
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode> 
 index-sort = true
 wrapping-scroll = false
 enable-click = true
+
+;label-mode = %mode%
+;label-mode-padding = 0 
+;label-focused-font = 0
+;label-unfocused-font = 0
+;label-urgent-font = 0
+;label-visible-font = 0 
 
 ws-icon-0 =1; 壹 
 ws-icon-1 =2;貳
@@ -98,15 +162,14 @@ label-focused = %icon%
 ;label-focused = 
 ;label-focused = %index% %name% 
 label-focused-background = ${colors.darkgreen}
-label-focused-foreground = ${colors.white}
 label-focused-padding = 1
 
 label-unfocused = %icon%
 ;label-unfocused = 
 ;label-unfocused = %index% %name% 
 label-unfocused-padding = 1
-label-unfocused-background = ${colors.black}
-label-unfocused-foreground = ${colors.white}
+;label-unfocused-background = ${colors.black}
+label-unfocused-underlinde = ${colors.white}
 
 label-urgent = %icon%
 ;label-urgent = 
@@ -128,16 +191,47 @@ exec = checkupdates | wc -l
 tail = false
 label =  %output%
 interval = 45000
-format-background = ${colors.black}
 format-foreground = ${colors.white}
-label-padding = 1
 
 [module/vpn]
 type = custom/script
 exec = echo \(vpn\)
 exec-if = pgrep -x openvpn
 interval = 5
-format-background = ${colors.darkblue}
+format-foreground = #268bd2
+
+;[module/mpd]
+;type = internal/mpd
+;
+;host = 127.0.0.1
+;port = 4200
+;
+;intervel = 2
+;
+;format-online = <label-song> <icon-prev> <icon-play> <icon-pause> <icon-next> 
+;format-offline = <label-offline>
+;
+;label-offline =  no music
+;label-offline-foreground = ${colors.gray}
+;
+;label-song = %artist% - %title%
+;label-song-maxlen = 95
+;label-song-ellipsis = true
+;
+;icon-prev = 
+;icon-seekb = <<
+;icon-stop = o
+;icon-pause = 
+;icon-play = 
+;icon-next = 
+;icon-seekf = >>
+;
+;icon-random = S
+;icon-repeat = R
+;
+;toggle-on-foreground = #e60053
+;toggle-off-foreground = #66
+
 
 [module/backlight]
 type = internal/xbacklight
@@ -163,7 +257,7 @@ format-label = internal/cpu
 
 format = <label> 
 ;format = <label> <ramp-coreload>
-format-background = ${colors.blue}
+format-foreground = ${colors.blue}
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -179,7 +273,8 @@ type = internal/cpu
 interval = 1.5
 label =  %percentage-cores%
 ;# label = %{F${colors.white}  %percentage% %{F-}
-label-padding= 1
+label-underline = ${colors.white}
+padding= 0
 
 
 [module/memory]
@@ -189,8 +284,7 @@ interval = 3
 #label = %{F${colors.white} MEM %percentage_used% %{F-}
 label =  %percentage_used%%
 label-underline = ${colors.white}
-label-background = ${colors.darkyellow}
-label-padding = 1
+label-foreground = ${colors.yellow}
 
 [module/wlan]
 type = internal/network
@@ -208,13 +302,10 @@ accumulate-stats = true
 
 ;label-connected = D:%downspeed:8% U:%upspeed:8% %essid% %signal%% %local_ip% 
 label-connected =  %downspeed%  %upspeed% %local_ip% 
-label-connected-background = ${colors.green}
-label-connected-padding = 1
-
+label-connected-foreground = ${colors.green}
 label-disconnected =   NO WIFI
 label-disconnected-foreground = ${colors.white}
 label-disconnected-background = ${colors.brightred}
-label-disconnected-padding = 1
 
 
 ;[module/wired-network]
@@ -238,7 +329,7 @@ type = internal/date
 date =  %b %d %a %l:%M %p 
 interval = 15
 ;format-underline = ${colors.white}
-format-background = ${colors.orange}
+;format-background = ${colors.black}
 ;format-foreground = ${colors.white}
 format-padding = 1
 
@@ -250,16 +341,16 @@ master-soundcard = default
 speaker-soundcard = default
 headphone-soundcard = default
 
-format-volume =  <label-volume> 
-;format-volume = <bar-volume> 
-format-volume-background = ${colors.pink}
-format-volume-padding = 1
+;mapped = true
 
-label-volume = %percentage%%
+format-volume =  <label-volume>% 
+;format-volume = <bar-volume> 
+
+label-volume = %percentage%
+label-volume-foreground = ${root.foreground}
 
 label-muted = muted
-label-muted-background = ${colors.brightred}
-label-muted-padding = 1
+label-muted-foreground = ${colors.gray}
 
 bar-volume-width = 9
 bar-volume-foreground-0 = ${colors.green}
@@ -281,33 +372,29 @@ bar-volume-empty = |
 bar-volume-empty-font = 4
 bar-volume-empty-foreground = ${colors.gray}
 
+
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = ADP1
 full-at = 99
-;label-discharging-foreground = ${colors.red}
-;label-charging-foreground = ${colors.darkgreen}
+label-full-foreground = ${colors.white}
+label-discharging-foreground = ${colors.red}
+label-charging-foreground = ${colors.darkgreen}
 
 format-charging = <animation-charging> <label-charging>
 ;format-charging = BAT:<label-charging>
-format-charging-background = ${colors.turquoise}
-format-charging-padding = 1
 
 format-discharging = <ramp-capacity> <label-discharging>
 ;format-discharging = BAT:<label-discharging>
-format-discharging-background = ${colors.yellow}
-format-discharging-padding = 1
 
 format-full =  <label-full>
 ;format-full = BAT:<label-full>
-format-full-background = ${colors.turquoise}
-format-full-padding = 1
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-;ramp-capacity-foreground = ${colors.white}
+ramp-capacity-foreground = ${colors.white}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -324,22 +411,29 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <label>
-label-background = ${colors.purple}
+label-foreground = ${colors.purple}
+format-underline = ${colors.white}
 format-warn = <label-warn>
-format-warn-background = ${colors.brightred}
+format-warn-underline = ${colors.red}
 
-label-padding = 1
-label-warn-padding = 1
+format-padding = 0
+format-warn-padidng = 0
 
 label =  %temperature%
 label-warn =  %temperature%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #55
+
 
 [module/menu0]
 type = custom/menu
 
 format = <label-toggle> <menu>
+format-underline = ${colors.white}
 format-padding = 1
-format-background = ${colors.white}
 
 menu-0-0 =  shutdown
 menu-0-0-exec = shutdown now
@@ -351,3 +445,29 @@ label-open =  
 label-close =
 
 
+;[module/powermenu]
+;type = custom/menu
+;
+;label-open =  power
+;label-open-foreground = #e60053
+;label-close =  cancel
+;label-close-foreground = #e60053
+;label-separator = |
+;label-separator-foreground = #55
+;
+;menu-0-0 = reboot
+;menu-0-0-exec = menu-open-1
+;menu-0-1 = power off
+;menu-0-1-exec = menu-open-2
+;
+;menu-1-0 = cancel
+;menu-1-0-exec = menu-open-0
+;menu-1-1 = reboot
+;menu-1-1-exec = sudo reboot
+;
+;menu-2-0 = power off
+;menu-2-0-exec = sudo poweroff
+;menu-2-1 = cancel
+;menu-2-1-exec = menu-open-0
+
+;vim:ft=dosini
