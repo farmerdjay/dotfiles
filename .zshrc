@@ -97,7 +97,9 @@ alias ytmp3="youtube-dl --extract-audio --audio-format mp3"
 alias pff='nohup firefox --private-window &'
 alias bg='feh --randomize --bg-fill ~/Dropbox/Photos/wallpapers/'
 alias r='ranger'
+alias v='vim'
 alias weather='curl wttr.in'
+alias bt='bluetooth off; sleep 2; bluetooth on'
 alias vrecord="ffmpeg -f x11grab \
 	-s $(xdpyinfo | grep dimension | awk '{print $2;}') \
 	-i $DISPLAY \

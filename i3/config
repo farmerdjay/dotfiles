@@ -87,9 +87,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Control+s layout stacking
+bindsym $mod+Control+w layout tabbed
+bindsym $mod+Control+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle
@@ -163,7 +163,7 @@ exec xinput set-prop 'ELAN0501:00 04F3:3018 Touchpad' 'libinput Natural Scrollin
 #exec --no-startup-id xrandr --output LVDS1 --off
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec chromium
-exec redshift-gtk
+exec --no-startup-id redshift-gtk
 exec_always --no-startup-id feh --randomize --bg-fill ~/Dropbox/Photos/wallpapers/
 #exec --no-startup-id i3-msg 'workspace $workspace2; exec subl3; workspace $workspace1'
 #exec --no-startup-id i3-msg 'workspace $workspace2; exec thunar; exec $term; workspace $workspace1'
@@ -172,6 +172,15 @@ exec_always --no-startup-id feh --randomize --bg-fill ~/Dropbox/Photos/wallpaper
 #
 # hangouts: never float, never sticky, no border, always on workspace 5
 for_window [title="^Google Hangouts.*$" window_role="app"] floating disable
+
+# Dropdown Scratchpad 
+exec --no-startup-id $term --name dropdown -e tmux
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 1000 800
+for_window [instance="dropdown"] move position center
+for_window [instance="dropdown"] move scratchpad
+bindsym F12 [instance="dropdown"] scratchpad show; move position center
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -221,6 +230,7 @@ bindsym $mod+r mode "resize"
         #status_command polybar fullBar -c /home/jason/.config/i3/polybar/config
  #       status_command ~/.config/i3/polybar.sh
 #}
+
 exec --no-startup-id ~/.config/i3/polybar.sh
 
 
@@ -280,7 +290,7 @@ mode "num" {
 bindsym Num_Lock mode "num"
 
 # Gaps around windows
-gaps inner 30
+gaps inner 0
 gaps outer 0
 
 # Adjust gaps
@@ -290,8 +300,20 @@ bindsym $mod+o		gaps outer current plus 5
 bindsym $mod+Shift+o	gaps outer current minus 5
 
 # Window border (somehow need this to avoid wallpaper being cut off)
-for_window [class = "^.*"] border pixel 3
+for_window [class = "^.*"] border pixel 2
 
 # Remap Caps Lock key to Escape key
-exec setxkbmap -option caps:escape
+exec --no-startup-id setxkbmap -option caps:escape
+
+
+
+
+
+
+
+
+
+
+
+
 
