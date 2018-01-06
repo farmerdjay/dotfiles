@@ -13,6 +13,7 @@ blue = #95aec7
 lightblue = #7fd7ff
 darkblue = #2a4cba
 navyblue = #0a16c9
+reallylightyellow = #e5e5ce
 lightyellow = #ffff89
 yellow = d8db20
 darkyellow = 9ea010
@@ -43,7 +44,7 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-left = pkgupdates wlan vpn
+modules-left = pkgupdates wlan vpn cmus
 modules-center = i3 xwindow
 modules-right = cpu memory battery volume temperature backlight date 
 
@@ -64,6 +65,8 @@ font-1 = Roboto:size=10;0
 font-2 = Noto Sans CJK TC:size=10;0
 font-3 = PowerlineFont:size=10;0
 font-4 = FontAwesome:size=9;0
+font-6 = FontAwesome5Free:style=Solid:pixelsize=11
+font-7 = FontAwesome5Brands:style=Solid:pixelsize=11
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -72,7 +75,7 @@ scroll-down = i3wm-wsprev
 type = internal/xwindow
 format-background = ${colors.darkgreen}
 format-foreground = ${colors.white}
-label =  %title:0:70:...% 
+label =  %title:0:60:...% 
 ;label-maxlen = 100
 label-padding = 1
 
@@ -212,7 +215,8 @@ format-disconnected-underline = ${colors.red}
 accumulate-stats = true
 
 ;label-connected = D:%downspeed:8% U:%upspeed:8% %essid% %signal%% %local_ip% 
-label-connected =  %essid% %local_ip%  %downspeed%  %upspeed% 
+;label-connected =  %essid% %local_ip%  %downspeed%  %upspeed% 
+label-connected = %local_ip%  %downspeed%  %upspeed% 
 label-connected-background = ${colors.lightblue}
 label-connected-padding = 1
 
@@ -322,6 +326,19 @@ animation-charging-4 = 
 ;animation-charging-foreground = ${colors.white}
 animation-charging-framerate = 1000
 
+[module/cmus]
+type = custom/script
+
+exec = sh ~/.config/i3/polybar/cmus.sh
+exec-if = pgrep -x cmus
+interval = 1
+format-prefix = " "
+format-background = ${colors.reallylightyellow}
+format-padding = 1
+
+click-left = cmus-remote --pause
+click-middle = cmus-remote --prev
+click-right = cmus-remote --next
 
 [module/temperature]
 type = internal/temperature

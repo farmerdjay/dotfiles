@@ -8,7 +8,7 @@ scrollback_lines = 10000
 
 
 [colors]
-background = rgba(40, 40, 65, 0.90)
+background = rgba(40, 40, 65, 0.95)
 
 # Base16 Atelier Estuary
 # Author: Bram de Haan (http://atelierbramdehaan.nl)
