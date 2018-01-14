@@ -153,6 +153,12 @@ let g:ctrlp_show_hidden = 1             " find dot files
 	"let g:airline#extensions#tabline#left_alt_sep = '|'
 "}
 
+"" Lightline
+set noshowmode
+"let g:lightline = {
+"      \ 'colorscheme': 'jellybeans',
+"      \ }
+
 "" === Rarely used ==============
 
 """ Common lists in Vim
