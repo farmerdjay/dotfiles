@@ -106,9 +106,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_z,                      spawn,          SHCMD ("cmus-remote --prev")},
 	{ 0,                            XF86MonBrightnessUp,       spawn,          SHCMD ("xbacklight -inc 10")},
 	{ 0,                            XF86MonBrightnessDown,     spawn,          SHCMD ("xbacklight -dec 10")},
-	{ 0,                            XF86AudioLowerVolume,      spawn,          SHCMD ("amixer -q sset Master 3%-")},
+	{ 0,                            XF86AudioLowerVolume,      spawn,          SHCMD ("amixer -q sset Master 4%-")},
 	{ 0,                            XF86AudioMute,             spawn,          SHCMD ("amixer -q sset Master toggle")},
-	{ 0,                            XF86AudioRaiseVolume,      spawn,          SHCMD ("amixer -q sset Master 3%+")},
+	{ 0,                            XF86AudioRaiseVolume,      spawn,          SHCMD ("amixer -q sset Master 4%+")},
 	TAGKEYS(                        XK_1,                                      0)
 	TAGKEYS(                        XK_2,                                      1)
 	TAGKEYS(                        XK_3,                                      2)

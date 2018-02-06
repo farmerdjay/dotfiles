@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 if [ $# -eq 0 ]; then
 	PING="ping -a -c 4 8.8.8.8"
