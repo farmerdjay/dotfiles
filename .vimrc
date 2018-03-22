@@ -214,6 +214,7 @@ let g:lightline = {
 	let g:lightline_buffer_reservelen = 20
 "}
 
+
 "" === Rarely used ==============
 
 """ Common lists in Vim

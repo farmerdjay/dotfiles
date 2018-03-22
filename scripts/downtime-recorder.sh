@@ -6,16 +6,13 @@ else
 	PING="ping -a -c 4 $1"
 fi
 
-while true
-do
-	
-	$PING
-	
-	if [ $? -eq 0 ]; then
-		echo ======== OK ========
-	else
-		echo "FAIL at $(date)" >> downtime.log
-	fi
 
-	sleep 1m
-done
+$PING
+
+if [ $? -eq 0 ]; then
+	echo ======== OK ========
+else
+	echo "FAIL at $(date)" >> downtime.log
+	mpv ../internet-down.mp3
+fi
+
