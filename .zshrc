@@ -89,7 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/codes/scripts
 
 DEFAULT_USER="jason"
 alias cdhot="cd /run/user/1000/gvfs/smb-share:server=hotbox,share=s128"
@@ -113,5 +113,5 @@ export RTV_BROWSER='vimb'
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source ~/Private/zshrc_alias
+source ~/Dropbox/private/zshrc_alias
 

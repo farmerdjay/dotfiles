@@ -12,6 +12,8 @@ echo "~/.config/termite"
 echo "~/.config/vimb/config"
 echo "~/codes/dwm"
 echo "~/codes/scripts"
+echo "~/codes/RaspberryPiFiles"
+echo "~/codes/st"
 echo ""
 echo "to ~/dotfiles"
 echo ""
@@ -23,4 +25,6 @@ rsync -av --delete ~/.bashrc ~/.vimrc ~/.tmux.conf ~/.Xresources ~/.zshrc ~/.vim
 rsync -av --delete ~/.config/vimb/config ~/codes/dotfiles/vimb/
 rsync -av --delete ~/codes/dwm ~/codes/dotfiles/
 rsync -av --delete ~/codes/scripts ~/codes/dotfiles/
+rsync -av --delete ~/codes/RaspberryPiFiles ~/codes/dotfiles/
+rsync -av --delete ~/codes/st ~/codes/dotfiles/
 

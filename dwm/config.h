@@ -19,14 +19,15 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_green[]       = "#1c7a4e";
+static const char col_gray[]        = "#666666";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_green,  col_green  },
+	[SchemeNorm] = { col_gray, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_gray3, col_gray1,  col_green  },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9:audio" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -71,8 +72,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-l", "28", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", "darkmagenta", "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-i", "-l", "28", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", "darkmagenta", "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "termite", NULL };
+static const char *clipcmd[]  = { "clipmenu", "-i", "-l", "28", "-fn", "Terminus:size=16", "-sb", "darkorange", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "termite", "-t", scratchpadname, "--geometry", "800x600", "-e", "tmux", NULL };
 
@@ -101,6 +103,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period,                 focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,                  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,                 tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_c,                      spawn,          {.v = clipcmd } },
 	{ 0,                            XK_F12,                    togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_c,                      spawn,          SHCMD ("cmus-remote --pause")},
 	{ MODKEY|ShiftMask,             XK_b,                      spawn,          SHCMD ("cmus-remote --next")},

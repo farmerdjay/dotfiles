@@ -7,7 +7,6 @@ setxkbmap -option caps:escape
 xinput set-prop 'ELAN0501:00 04F3:3018 Touchpad' 'libinput Tapping Enabled' 1
 xinput set-prop 'ELAN0501:00 04F3:3018 Touchpad' 'libinput Natural Scrolling Enabled' 1
 
-exec /home/jason/codes/scripts/turn-off-eDP1-when-connected-to-HDMI1.sh &
 
 ### cmus =================================
 function CMUS(){
@@ -72,8 +71,12 @@ do
 	sleep 3s
 done &
 
+export PATH="${PATH}:$HOME/codes/scripts"
+
+exec /home/jason/codes/scripts/turn-off-eDP1-when-connected-to-HDMI1.sh &
 exec redshift-gtk &
 exec feh --randomize --bg-fill ~/Dropbox/Photos/wallpapers &
 exec compton -CG &
+exec clipmenud &
 
 exec /home/jason/codes/dwm/dwm
