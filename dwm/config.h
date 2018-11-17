@@ -47,11 +47,13 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#include "tcl.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|||",      tcl },
 };
 
 /* key definitions */
@@ -76,7 +78,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-i", "-l", "28", "-m", dmenumon,
 static const char *termcmd[]  = { "termite", NULL };
 static const char *clipcmd[]  = { "clipmenu", "-i", "-l", "28", "-fn", "Terminus:size=16", "-sb", "darkorange", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "termite", "-t", scratchpadname, "--geometry", "800x600", "-e", "tmux", NULL };
+/*static const char *scratchpadcmd[] = { "termite", "-t", scratchpadname, "--geometry", "800x600", "-e", "tmux", NULL };*/
+static const char *scratchpadcmd[] = { "/home/jason/codes/lukest/st", "-t", scratchpadname, "-g", "100x40", "-e", "tmux", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                        function        argument */
@@ -95,6 +98,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,                      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,                      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,                      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_s,                      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,                  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,                  togglefloating, {0} },
 	{ MODKEY,                       XK_0,                      view,           {.ui = ~0 } },

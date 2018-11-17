@@ -11,8 +11,8 @@
 #ZSH_THEME="bullet-train"
 #ZSH_THEME="gnzh"
 #ZSH_THEME="frisk"
-#ZSH_THEME="bira"
-ZSH_THEME="agnoster"
+ZSH_THEME="bira"
+#ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
